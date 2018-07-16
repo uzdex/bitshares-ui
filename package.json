@@ -1,6 +1,6 @@
 {
-    "name": "BitShares2-light",
-    "version": "2.0.180720-rc1",
+    "name": "UzDEX-light",
+    "version": "0.1.1",
     "description": "Advanced wallet interface for the BitShares financial blockchain.",
     "homepage": "https://github.com/bitshares/bitshares-ui",
     "author": "Sigve Kvalsvik <kvalsvik.crypto@gmail.com>",
@@ -81,7 +81,7 @@
     },
     "browsersList": "electron 1.7",
     "build": {
-        "productName": "BitShares",
+        "productName": "UzDEX",
         "appId": "org.bitshares.graphene",
         "files": [
             "build/electron",

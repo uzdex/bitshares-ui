@@ -93,7 +93,7 @@ export function getMyMarketsQuotes() {
  * @returns {list of string tuples}
  */
 export function getFeaturedMarkets() {
-    return [[]];
+    return [["TEST.UZS", "TEST.STCK"], ["TEST.UZS", "TEST.USD"]];
 }
 
 /**
