@@ -335,8 +335,8 @@ class MyMarkets extends React.Component {
             lookupBase: null,
             inputValue: "",
             minWidth: "100%",
-            findBaseInput: "USD",
-            activeFindBase: "USD"
+            findBaseInput: "TEST.UZS",
+            activeFindBase: "TEST.UZS"
         };
 
         this._setMinWidth = this._setMinWidth.bind(this);
@@ -1179,7 +1179,7 @@ export default connect(MyMarketsWrapper, {
             starredMarkets: SettingsStore.getState().starredMarkets,
             onlyLiquid: SettingsStore.getState().viewSettings.get(
                 "onlyLiquid",
-                true
+                false
             ),
             defaultMarkets: SettingsStore.getState().defaultMarkets,
             viewSettings: SettingsStore.getState().viewSettings,

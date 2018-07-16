@@ -14,7 +14,7 @@ import {
     getUnits
 } from "branding";
 
-const CORE_ASSET = "BTS"; // Setting this to BTS to prevent loading issues when used with BTS chain which is the most usual case currently
+const CORE_ASSET = "UZDE"; // Setting this to BTS to prevent loading issues when used with BTS chain which is the most usual case currently
 
 const STORAGE_KEY = "__graphene__";
 let ss = new ls(STORAGE_KEY);
@@ -57,7 +57,7 @@ class SettingsStore {
             locale: "en",
             apiServer: settingsAPIs.DEFAULT_WS_NODE,
             faucet_address: settingsAPIs.DEFAULT_FAUCET,
-            unit: CORE_ASSET,
+            unit: "TEST.UZS",
             showSettles: false,
             showAssetPercent: false,
             walletLockTimeout: 60 * 10,
@@ -187,30 +187,20 @@ class SettingsStore {
             this.basesKey = this._getChainKey("preferredBases");
             // Default markets setup
             let topMarkets = {
-                markets_4018d784: getMyMarketsQuotes(),
-                markets_39f5e2ed: [
-                    // TESTNET
-                    "PEG.FAKEUSD",
-                    "BTWTY"
-                ]
+                markets_d04cbbac: getMyMarketsQuotes()
             };
 
             let bases = {
-                markets_4018d784: getMyMarketsBases(),
-                markets_39f5e2ed: [
-                    // TESTNET
-                    "TEST"
-                ]
+                markets_d04cbbac: getMyMarketsBases()
             };
 
             let coreAssets = {
-                markets_4018d784: "BTS",
-                markets_39f5e2ed: "TEST"
+                markets_d04cbbac: "UZDE"
             };
-            let coreAsset = coreAssets[this.starredKey] || "BTS";
+            let coreAsset = coreAssets[this.starredKey] || "UZDE";
             this.defaults.unit[0] = coreAsset;
 
-            let defaultBases = bases[this.starredKey] || bases.markets_4018d784;
+            let defaultBases = bases[this.starredKey] || bases.markets_d04cbbac;
             let storedBases = ss.get(this.basesKey, []);
             this.preferredBases = Immutable.List(
                 storedBases.length ? storedBases : defaultBases

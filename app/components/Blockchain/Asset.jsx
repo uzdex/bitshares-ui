@@ -258,7 +258,7 @@ class Asset extends React.Component {
             ? description.market
             : core_asset
                 ? core_asset.get("symbol")
-                : "BTS";
+                : "UZDE";
         if ("bitasset" in asset && asset.bitasset.is_prediction_market) {
             preferredMarket = ChainStore.getAsset(
                 asset.bitasset.options.short_backing_asset
@@ -269,7 +269,8 @@ class Asset extends React.Component {
                 preferredMarket = core_asset.get("symbol");
             }
         }
-        if (asset.symbol === core_asset.get("symbol")) preferredMarket = "USD";
+        if (asset.symbol === core_asset.get("symbol"))
+            preferredMarket = "TEST.UZS";
         if (urls && urls.length) {
             urls.forEach(url => {
                 let markdownUrl = `<a target="_blank" rel="noopener noreferrer" href="${url}">${url}</a>`;

@@ -23,27 +23,23 @@ class StarredMarkets extends React.Component {
         return <MarketsTable markets={markets} forceDirection={true} />;
     }
 }
-StarredMarkets = connect(
-    StarredMarkets,
-    {
-        listenTo() {
-            return [SettingsStore];
-        },
-        getProps() {
-            return {
-                starredMarkets: SettingsStore.getState().starredMarkets
-            };
-        }
+StarredMarkets = connect(StarredMarkets, {
+    listenTo() {
+        return [SettingsStore];
+    },
+    getProps() {
+        return {
+            starredMarkets: SettingsStore.getState().starredMarkets
+        };
     }
-);
+});
 
 class FeaturedMarkets extends React.Component {
     constructor() {
         super();
 
         this.marketsByChain = {
-            "4018d784": getFeaturedMarkets(),
-            "39f5e2ed": [["TEST", "PEG.FAKEUSD"], ["TEST", "BTWTY"]]
+            d04cbbac: getFeaturedMarkets()
         };
 
         let chainID = Apis.instance().chain_id;
@@ -73,7 +69,7 @@ class FeaturedMarkets extends React.Component {
         let {lowVolumeMarkets} = nextProps || this.props;
         let markets =
             this.marketsByChain[this.state.chainID] ||
-            this.marketsByChain["4018d784"];
+            this.marketsByChain["d04cbbac"];
 
         markets = markets.filter(pair => {
             let [first, second] = pair;
@@ -91,19 +87,16 @@ class FeaturedMarkets extends React.Component {
     }
 }
 
-FeaturedMarkets = connect(
-    FeaturedMarkets,
-    {
-        listenTo() {
-            return [MarketsStore];
-        },
-        getProps() {
-            return {
-                lowVolumeMarkets: MarketsStore.getState().lowVolumeMarkets
-            };
-        }
+FeaturedMarkets = connect(FeaturedMarkets, {
+    listenTo() {
+        return [MarketsStore];
+    },
+    getProps() {
+        return {
+            lowVolumeMarkets: MarketsStore.getState().lowVolumeMarkets
+        };
     }
-);
+});
 
 class TopMarkets extends React.Component {
     render() {
